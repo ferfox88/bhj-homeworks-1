@@ -9,5 +9,3 @@ const timerInterval = setInterval(() => {
         timer.textContent = timerCount;
     }
 }, 1000);
-
-console.log(timerCount)
