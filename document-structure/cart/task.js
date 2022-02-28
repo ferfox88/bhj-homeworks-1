@@ -35,22 +35,27 @@ productAdd.forEach(item => {
 
         const idProduct = product.dataset.id;
         const img = (product.querySelector('img')).getAttribute('src');
-        let value = Number(product.querySelector('.product__quantity-value').textContent);
+        const value = Number(product.querySelector('.product__quantity-value').textContent);
         const cartProduct = Array.from(document.querySelectorAll('.cart__product'));
 
-        cartProduct.forEach(element => {
-            if (element.dataset.id === idProduct) {
-                let cartValue = Number(element.querySelector('.cart__product-count').textContent);
-                value = cartValue + value;
-                element.remove();
-            }
-        })
-
-        cartProducts.innerHTML += `
+        const cartProductElement = `
             <div class="cart__product" data-id=${idProduct}>
                 <img class="cart__product-image" src=${img}>
                 <div class="cart__product-count"> ${value}</div>
             </div>
         `;
+
+        if (cartProducts.querySelector('.cart__product')) {
+            cartProduct.forEach(element => {
+                if (element.dataset.id === idProduct) {
+                    const cartValue = element.querySelector('.cart__product-count');
+                    cartValue.innerText = Number(cartValue.textContent) + value;
+                } else {
+                    cartProducts.insertAdjacentHTML('beforeEnd', cartProductElement);
+                }
+            })    
+        } else {
+            cartProducts.insertAdjacentHTML('beforeEnd', cartProductElement);
+        }
     })
 });

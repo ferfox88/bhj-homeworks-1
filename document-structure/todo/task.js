@@ -24,10 +24,7 @@ tasksList.addEventListener('click', (e) => {
     const taskRemove = Array.from(document.querySelectorAll('.task__remove'));
     const task = e.target.closest('.task');
 
-    taskRemove.forEach(element => {
-        if (element = task) {
-            task.remove();
-        }
-
-    });
+    if (taskRemove) {
+        task.remove();
+    }
 })
