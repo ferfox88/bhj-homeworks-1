@@ -6,8 +6,6 @@ tasksForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     if (taskInput.value.trim() !== '') {
-        const tasksList = document.getElementById('tasks__list');
-        const taskInput = document.getElementById('task__input');
         tasksElement = `
             <div class="task">
                 <div class="task__title">${taskInput.value}</div>
@@ -21,10 +19,9 @@ tasksForm.addEventListener('submit', (event) => {
 
 tasksList.addEventListener('click', (e) => {
     e.preventDefault();
-    const taskRemove = Array.from(document.querySelectorAll('.task__remove'));
-    const task = e.target.closest('.task');
 
-    if (taskRemove) {
-        task.remove();
+    const close = e.target.classList.value;
+    if (close === 'task__remove') {
+        e.target.closest('.task').remove();
     }
 })

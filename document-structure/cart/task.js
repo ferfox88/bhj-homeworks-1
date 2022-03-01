@@ -46,14 +46,14 @@ productAdd.forEach(item => {
         `;
 
         if (cartProducts.querySelector('.cart__product')) {
-            cartProduct.forEach(element => {
-                if (element.dataset.id === idProduct) {
-                    const cartValue = element.querySelector('.cart__product-count');
-                    cartValue.innerText = Number(cartValue.textContent) + value;
-                } else {
-                    cartProducts.insertAdjacentHTML('beforeEnd', cartProductElement);
-                }
-            })    
+            const productChange = cartProduct.find(element => element.dataset.id === idProduct)
+            if (productChange) {
+                const cartValue = productChange.querySelector('.cart__product-count');
+                cartValue.innerText = Number(cartValue.textContent) + value;
+
+            } else {
+                cartProducts.insertAdjacentHTML('beforeEnd', cartProductElement);
+            }
         } else {
             cartProducts.insertAdjacentHTML('beforeEnd', cartProductElement);
         }
