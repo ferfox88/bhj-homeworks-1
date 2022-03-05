@@ -7,7 +7,7 @@ menuLink.forEach((item) => {
         const menuSub = menuItem.querySelector('.menu_sub');
         
         if(menuSub) {
-            menuSub.classList.add('menu_active');
+            menuSub.classList.toggle('menu_active');
             return false;
         }
     }

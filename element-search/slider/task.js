@@ -15,9 +15,9 @@ sliderNext.onclick = () => {
 }
 
 function showSlide(n) {
-    for (let i = 0; i < sliderItem.length; i++) {
-        sliderItem[i].classList.remove('slider__item_active');
-    }
+
+    const indexActive = sliderItem.findIndex(item => item.className === "slider__item slider__item_active");
+    sliderItem[indexActive].classList.remove('slider__item_active');
 
     if (n > sliderItem.length) {
         slide = 1;
